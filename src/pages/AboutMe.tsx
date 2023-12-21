@@ -1,6 +1,13 @@
-import { ToggleDarkMode } from "@/components/ToggleDarkMode";
 import React from "react";
 
+import Header from "@/components/Header";
+import { headerMenus } from "@/components/Header/menus";
+
+
 export const AboutMe: React.FC = () => {
-  return <ToggleDarkMode />;
+  return (
+    <>
+      <Header menus={headerMenus} />
+    </>
+  );
 };

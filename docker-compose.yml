@@ -1,0 +1,24 @@
+# Use postgres/example user/password credentials
+version: "3.1"
+
+services:
+  db:
+    image: postgres
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: "${DOCKER_POSTGRESS_USER}"
+      POSTGRES_PASSWORD: "${DOCKER_POSTGRESS_PASSWORD}"
+      POSTGRES_DB: "${DOCKER_POSTGRES_DB}"
+  app:
+    image: portifolio-brayan-divbrands
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    volumes:
+        - .:/app
+        - /app/node_modules
+        - /app/.next
+    ports:
+      - "3000:3000"

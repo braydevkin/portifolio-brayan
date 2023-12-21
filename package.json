@@ -1,12 +1,14 @@
 {
-  "name": "portilofio-brayan-divbrands",
+  "name": "portifolio-brayan-divbrands",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prismadb:pull": "prisma db pull",
+    "prismadb:generate": "prisma generate"
   },
   "dependencies": {
     "@radix-ui/react-dropdown-menu": "^2.0.6",
@@ -32,6 +34,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.0.4",
     "postcss": "^8",
+    "prisma": "^5.7.1",
     "tailwindcss": "^3.3.0",
     "typescript": "^5"
   }

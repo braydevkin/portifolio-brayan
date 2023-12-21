@@ -7,4 +7,31 @@
   outline: 0;
   box-sizing: border-box;
   outline: 0;
+  overflow-x: hidden;
+}
+
+html {
+  --scroll-behavior: smooth!important;
+  scroll-behavior: smooth!important;
+  }
+
+
+  /* width */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #c7c7c7;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

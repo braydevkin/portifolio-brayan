@@ -36,7 +36,9 @@ const Header = ({ menus }: HeaderProps) => {
           <ul className="justify-center items-center space-y-8 md:flex md:space-x-6 md:space-y-0">
             {menus.map((item, idx) => (
               <li key={idx}>
-                <Link href={item.path}>{item.title}</Link>
+                <Link href={item.path} scroll={false}>
+                  {item.title}
+                </Link>
               </li>
             ))}
           </ul>

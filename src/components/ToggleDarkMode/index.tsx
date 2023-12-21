@@ -16,7 +16,7 @@ export const ToggleDarkMode = () => {
   const { setTheme } = useTheme();
 
   return (
-    <section className="bg-gray-800 flex justify-end px-4 py-2">
+    <section className="bg-gray-700 flex justify-end px-6 py-2">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="outline" size="icon">

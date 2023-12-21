@@ -1,11 +1,12 @@
 type Activities = {
-  act: string;
+  detail: string;
 };
 
 export type ProjectHistoricProps = {
-  company: string;
+  company?: string;
+  position?: string;
   start: string;
   end: string;
-  project: string;
+  project?: string;
   activities: Activities[];
 };

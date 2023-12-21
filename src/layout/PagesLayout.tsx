@@ -16,7 +16,7 @@ type PageLayoutProps = {
 
 const PageLayout = ({ children }: PageLayoutProps) => {
   return (
-    <main className="max-h-screen w-screen">
+    <main className="w-screen flex-1 h-auto overflow-x-hidden">
       <ToggleDarkMode />
       <Header menus={headerMenus} />
       {children}

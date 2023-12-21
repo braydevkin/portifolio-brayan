@@ -28,8 +28,14 @@ The forecast I gave to some important activities in the creation of the project.
 | Creating responsive header and footer | 30 minutes |
 | Creating responsive page about me | 30 minutes |
 | Creating responsive page of projects | 30 minutes |
-| Creating responsive page of hobbies | 30 minutes |
+| Creating responsive page of knowledges | 30 minutes |
 | configuration of API tools  | 30 minutes |
 | Create API  | 01 hour |
+| Create from using React Hook Form  | 30 minutes |
+| Create Prisma and Docker setup  | 01 hour |
+| Documentation  | 30 minutes |
+
+
+
 
 

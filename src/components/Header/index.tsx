@@ -17,7 +17,7 @@ const Header = ({ menus }: HeaderProps) => {
       <div className="items-center px-4 max-w-screen-xl mx-auto md:flex md:px-8">
         <div className="flex items-center justify-between py-3 md:py-5 md:block">
           <Link href="/">
-            <h1 className="text-3xl font-bo">Brayan Quirino</h1>
+            <h1 className="text-xl font-bold">Brayan Quirino</h1>
           </Link>
           <div className="md:hidden">
             <button
@@ -36,7 +36,7 @@ const Header = ({ menus }: HeaderProps) => {
           <ul className="justify-center items-center space-y-8 md:flex md:space-x-6 md:space-y-0">
             {menus.map((item, idx) => (
               <li key={idx}>
-                <Link href={item.path} scroll={false}>
+                <Link href={item.path} scroll={true}>
                   {item.title}
                 </Link>
               </li>

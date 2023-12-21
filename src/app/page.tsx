@@ -1,5 +1,5 @@
-import { AboutMe } from "@/pages/AboutMe";
+import Portilofio from "@/pages/Portifolio";
 
 export default function Home() {
-  return <AboutMe />;
+  return <Portilofio />;
 }

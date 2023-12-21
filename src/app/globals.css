@@ -8,3 +8,8 @@
   box-sizing: border-box;
   outline: 0;
 }
+
+html {
+  --scroll-behavior: smooth!important;
+  scroll-behavior: smooth!important;
+  }

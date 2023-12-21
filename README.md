@@ -25,7 +25,10 @@ The forecast I gave to some important activities in the creation of the project.
 | Setup Next Project | 5 minutes |
 | Setup Shadcn and Dark Mode | 5 minutes |
 | Creating project architecture | 10 minutes |
-| Creating responsive and accessible pages and components | 02 hours |
+| Creating responsive header and footer | 30 minutes |
+| Creating responsive page about me | 30 minutes |
+| Creating responsive page of projects | 30 minutes |
+| Creating responsive page of hobbies | 30 minutes |
 | configuration of API tools  | 30 minutes |
 | Create API  | 01 hour |
 

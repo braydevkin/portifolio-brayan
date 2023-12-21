@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import { Progress } from "../ui/progress";
 import { KnowledgesItem } from "./types";

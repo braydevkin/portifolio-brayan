@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer className=" shadow-sm absolute bottom-0 p-14 bg-gray-100 w-screen">
+    <footer className=" shadow-sm p-14  w-screen">
       <div className="flex flex-col lg:flex-row space-y-4 justify-between items-start">
         <div className="w-full h-full mb-4">
           <h1 className="font-bold mb-2">Brayan Quirino</h1>
@@ -20,10 +20,7 @@ const Footer = () => {
             >
               <Linkedin size={18} />
             </Link>
-            <Link
-              href="https://github.com/braydevkin"
-              target="_blank"
-            >
+            <Link href="https://github.com/braydevkin" target="_blank">
               <Github size={18} />
             </Link>
           </div>

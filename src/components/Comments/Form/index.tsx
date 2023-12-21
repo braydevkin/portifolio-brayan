@@ -1,17 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
+import { useForm, SubmitHandler } from "react-hook-form";
 
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 
-import { useForm, SubmitHandler } from "react-hook-form";
-
-interface IFormInput {
-  name: string;
-  comment: string;
-}
+import { ICommentsInputForm } from "../shared/ICommentsInputForm";
 
 const CommentForm = () => {
   const TEXTAREA_LIMIT = 200;
@@ -20,9 +16,10 @@ const CommentForm = () => {
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm<IFormInput>();
+  } = useForm<ICommentsInputForm>();
 
-  const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<ICommentsInputForm> = (data) =>
+    console.log(data);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="mt-6">

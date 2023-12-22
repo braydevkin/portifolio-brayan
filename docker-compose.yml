@@ -11,6 +11,14 @@ services:
       POSTGRES_USER: "${DOCKER_POSTGRESS_USER}"
       POSTGRES_PASSWORD: "${DOCKER_POSTGRESS_PASSWORD}"
       POSTGRES_DB: "${DOCKER_POSTGRES_DB}"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready"]
+      interval: 30s
+      timeout: 60s
+      retries: 5
+      start_period: 80s  
+    networks:
+      - portifolio-brayan-divbrands-network
   app:
     image: portifolio-brayan-divbrands
     build:
@@ -23,7 +31,8 @@ services:
     ports:
       - "3000:3000"
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     command:
       - sh
       - -c
@@ -31,3 +40,8 @@ services:
         echo "Running"
         yarn prisma db push
         yarn dev
+    networks:
+      - portifolio-brayan-divbrands-network
+networks:
+  portifolio-brayan-divbrands-network:
+    driver: bridge

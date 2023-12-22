@@ -22,6 +22,14 @@ const CommentList = () => {
     return newSkip >= 0;
   }, [pagination.skip, pagination.take]);
 
+  const totalPages = useMemo(() => {
+    return Math.ceil(pagination.total / pagination.take);
+  }, [pagination.total, pagination.take]);
+
+  const currentPage = useMemo(() => {
+    return Math.ceil(pagination.skip / pagination.take) + 1;
+  }, [pagination.skip, pagination.take]);
+
   const next = useCallback(() => {
     updateCommentsFilters({ skip: pagination.skip + pagination.take });
   }, [pagination.skip, pagination.take, updateCommentsFilters]);
@@ -43,7 +51,7 @@ const CommentList = () => {
             className="rounded-md border-2 p-4 mt-2"
             key={`Comment_${comment.id}`}
           >
-            <h1 className="font-bold italic">{comment.name ?? 'Anonymous'}</h1>
+            <h1 className="font-bold italic">{comment.name ?? "Anonymous"}</h1>
             <p className="text-md italic mt-2 text-justify">
               {comment.comment}
             </p>
@@ -51,7 +59,7 @@ const CommentList = () => {
         ))}
         <div className="w-full flex flex-row items-center justify-between mt-3">
           <span className="text-sm px-4 font-medium">
-            Showing {comments.length} of {pagination.total}
+            Showing page {currentPage} of {totalPages}
           </span>
           <div className="space-x-2">
             <Button disabled={!canGoToPrevious} onClick={() => previous()}>

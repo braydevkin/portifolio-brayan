@@ -9,26 +9,50 @@ import { Input } from "@/components/ui/input";
 
 import { ICommentsInputForm } from "../shared/ICommentsInputForm";
 
+import { useToast } from "@/components/ui/use-toast";
+
 const CommentForm = () => {
   const TEXTAREA_LIMIT = 200;
+
+  const { toast } = useToast();
+
   const {
     register,
     handleSubmit,
     watch,
+    reset,
     formState: { errors },
   } = useForm<ICommentsInputForm>();
 
   const onSubmit: SubmitHandler<ICommentsInputForm> = async (data) => {
-    //TODO SHOW ERROR
-    const createCommentReq = await fetch("/api/comments", {
+    await fetch("/api/comments", {
       method: "POST",
-      body: JSON.stringify(data),
+      body: JSON.stringify({ data }),
       headers: {
         "Content-Type": "application/json",
       },
-    });
-
-    return await createCommentReq.json();
+    })
+      .then((data) => {
+        reset();
+        if (data.status === 200) {
+          toast({
+            title: "Thank for comment",
+            description: "Feel free to add more comments.",
+            variant: "default",
+            duration: 2000,
+          });
+          return data.json();
+        }
+        toast({
+          title: "An error occurs",
+          description: "You can try again or talk to our support",
+          variant: "destructive",
+          duration: 2000,
+        });
+      })
+      .catch((err: any) => {
+        console.error(err);
+      });
   };
 
   return (

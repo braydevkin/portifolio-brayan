@@ -75,7 +75,7 @@ const CommentForm = () => {
     <form onSubmit={handleSubmit(onSubmit)} className="mt-6">
       <div className="grid w-full gap-2">
         <Input
-          type="Name"
+          type="text"
           placeholder="Type your name"
           {...register("name", {
             maxLength: {

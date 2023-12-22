@@ -1,4 +1,4 @@
-import { Comment } from "@prisma/client";
+import { Comment, Prisma } from "@prisma/client";
 import { prismaClient } from "../PrismaClientConfig";
 
 export type ListComments = {
@@ -11,7 +11,7 @@ export type ListCommentsResponse = {
   comments: Comment[];
 };
 
-export const createComment = async (data: Comment): Promise<Comment> => {
+export const createComment = async (data: Prisma.CommentCreateInput): Promise<Comment> => {
   return await prismaClient.comment.create({ data });
 };
 

@@ -2,30 +2,44 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { createComment } from "@/server/services/comment";
 import { Comment } from "@prisma/client";
 
-type ResponseData = {
-  comment: Comment;
-};
+import { z } from "zod";
 
-type MessageData = {
-  message: string;
-};
+const createCommentBodySchema = z.object({
+  name: z.string().max(20).nullable().optional(),
+  comment: z.string().max(200),
+});
+
+type CommentsResponse =
+  | {
+      comment: Comment;
+    }
+  | {
+      message: string;
+    }
+  | {
+      validationError: z.ZodError<z.TypeOf<typeof createCommentBodySchema>>;
+    };
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<ResponseData | MessageData>
+  res: NextApiResponse<CommentsResponse>
 ) {
   if (req.method === "POST") {
-    const data = req.body;
-
     try {
-      const comment = await createComment(data);
+      const createCommentDTO = createCommentBodySchema.safeParse(req.body);
 
-      res.status(200).json({ comment });
+      if (createCommentDTO.success) {
+        const comment = await createComment(createCommentDTO.data);
+
+        return res.status(200).json({ comment });
+      }
+
+      return res.status(400).json({ validationError: createCommentDTO.error });
     } catch (err) {
-      console.error('==> Error in create comment', err)
-      res.status(500).json({ message: 'Could not create comment' });
+      console.error("==> Error during comment creation", err);
+      return res.status(500).json({ message: "Could not create comment" });
     }
-  } else {
-    res.status(200).json({ message: "Hello from Next.js!" });
   }
+
+  return res.status(405).json({ message: "Method not allowed" });
 }

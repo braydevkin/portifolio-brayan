@@ -1,12 +1,13 @@
-"use client";
+import React from "react";
 
-import React, { useState } from "react";
-import { ICommentsInputForm } from "../shared/ICommentsInputForm";
 import { Pencil, Trash2 } from "lucide-react";
+import { Comment } from "@prisma/client";
 
-const CommentList = () => {
-  const [comments, setCommnets] = useState<ICommentsInputForm[]>([]);
+export type CommentListProps = {
+  comments: Comment[];
+};
 
+const CommentList = ({ comments }: CommentListProps) => {
   return (
     <>
       <section>

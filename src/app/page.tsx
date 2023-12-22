@@ -1,5 +1,24 @@
-import Portilofio from "@/pages/Portifolio";
+import React from "react";
 
-export default function Home() {
-  return <Portilofio />;
-}
+import PageLayout from "@/layout/PagesLayout";
+
+import AboutMe from "@/components/AboutMe";
+
+import Projects from "@/components/Projects";
+import { PROJECTS_HISTORIC } from "@/components/Projects/projects-historic";
+import Knowledges from "@/components/Knowledges";
+import { KNOWLEDGES } from "@/components/Knowledges/knowledges";
+import Comments from "@/components/Comments";
+
+const Home = () => {
+  return (
+    <>
+      <AboutMe />
+      <Projects historic={PROJECTS_HISTORIC} />
+      <Knowledges knowledges={KNOWLEDGES} />
+      <Comments comments={[]} />
+    </>
+  );
+};
+
+export default Home;

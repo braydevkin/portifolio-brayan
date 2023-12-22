@@ -4,6 +4,7 @@ import "./globals.css";
 
 import { DarkThemeProvider } from "@/layout/DarkThemeProvider";
 import { Toaster } from "@/components/ui/toaster";
+import PageLayout from "@/layout/PagesLayout";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -26,7 +27,7 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            {children}
+            <PageLayout>{children}</PageLayout>
             <Toaster />
           </DarkThemeProvider>
         </body>

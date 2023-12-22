@@ -1,6 +1,6 @@
 ##Portilofio Brayan - Divbrands
 
-[Access clicking here](https://portifolio-brayan-divbrands.vercel.app/#comments)
+[Access clicking here](https://portifolio-brayan-divbrands.vercel.app/)
 
 This project consists of a personal portfolio to assess the technical skills and experience required to join the Divbrands team.
 

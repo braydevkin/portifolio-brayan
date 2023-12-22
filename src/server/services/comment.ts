@@ -19,7 +19,11 @@ export const listComments = async ({
   skip,
   take,
 }: ListComments): Promise<ListCommentsResponse> => {
-  const comments = await prismaClient.comment.findMany({ skip, take });
+  const comments = await prismaClient.comment.findMany({
+    skip,
+    take,
+    orderBy: { createdAt: "desc" },
+  });
   const total = await prismaClient.comment.count();
 
   return {

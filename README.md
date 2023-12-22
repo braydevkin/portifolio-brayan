@@ -51,6 +51,9 @@ yarn test
 yarn cypress:open
 ```
 
+##### Observation about Cypress
+<small>You may need to add some dependencies to your Linux or Windows system in order to use cypress, below is a link to download them.</small>
+[Cypress setup](https://docs.cypress.io/guides/continuous-integration/introduction#Dependencies)
 
 
 ##### Extra commands 
@@ -65,6 +68,18 @@ yarn prismadb:generate
 yarn prismadb:push
 # Prisma Db Pull
 yarn prismadb:pull
+```
+
+##### Local CURL's
+
+``` bash
+#Create Comment
+curl --location 'http://localhost:3000/api/comments' \
+--header 'Content-Type: application/json' \
+--data '{
+    "name": "Teste",
+    "comment": "Test"
+}'
 ```
 
 

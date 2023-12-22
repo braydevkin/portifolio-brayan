@@ -8,9 +8,9 @@ services:
     ports:
       - 5432:5432
     environment:
-      POSTGRES_USER: "${DOCKER_POSTGRESS_USER}"
-      POSTGRES_PASSWORD: "${DOCKER_POSTGRESS_PASSWORD}"
-      POSTGRES_DB: "${DOCKER_POSTGRES_DB}"
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: divbrands
     healthcheck:
       test: ["CMD-SHELL", "pg_isready"]
       interval: 30s
@@ -44,6 +44,8 @@ services:
         yarn dev
     networks:
       - portifolio-brayan-divbrands-network
+    environment:
+      - DATABASE_URL:postgresql://admin:admin@db:5432/divbrands
 networks:
   portifolio-brayan-divbrands-network:
     driver: bridge

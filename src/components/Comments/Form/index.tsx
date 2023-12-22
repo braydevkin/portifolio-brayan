@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { useRouter } from "next/navigation";
 
 import { useForm, SubmitHandler } from "react-hook-form";
 
@@ -12,6 +11,8 @@ import { Input } from "@/components/ui/input";
 import { useToast } from "@/components/ui/use-toast";
 import { useCommentsRouter } from "@/hooks/useCommentsRouter";
 
+import { z } from "zod";
+
 export type CommentsInputForm = {
   name: string;
   comment: string;
@@ -21,7 +22,7 @@ const CommentForm = () => {
   const TEXTAREA_LIMIT = 200;
 
   const { toast } = useToast();
-  const router = useRouter();
+
   const { updateCommentsFilters } = useCommentsRouter();
 
   const {
@@ -42,16 +43,32 @@ const CommentForm = () => {
     });
 
     try {
-      reset();
       if (response.status === 200) {
-        await response.json();
         toast({
           title: "Thank for comment",
           description: "Feel free to add more comments.",
           variant: "default",
           duration: 2000,
         });
+        reset();
         updateCommentsFilters({ skip: 0 });
+        return;
+      }
+
+      if (response.status === 400) {
+        const responseBody = await response.json();
+
+        const validationError = responseBody.validationError as z.ZodError;
+        const errorMessage = validationError.issues
+          .map((issue) => `${issue.path} ${issue.message}`)
+          .join(", ");
+
+        toast({
+          title: "Validation error",
+          description: errorMessage,
+          variant: "destructive",
+          duration: 2000,
+        });
         return;
       }
       toast({

@@ -18,6 +18,8 @@ export const useCommentsRouter = () => {
         searchParams || ({} as Record<string, string>)
       );
 
+      const originalUrl = `?${params.toString()}#comments`;
+
       if (skip !== undefined) {
         params.set("skip", String(skip));
       }
@@ -26,7 +28,15 @@ export const useCommentsRouter = () => {
         params.set("take", String(take));
       }
 
-      router.push(`?${params.toString()}#comments`, {
+      const updatedURL = `?${params.toString()}#comments`;
+
+      //This logic was created to avoid unexpected behavior from Next, which doesn't take any action because the new URL is the same as the previous one.
+      if (originalUrl === updatedURL) {
+        router.refresh();
+        return;
+      }
+
+      router.push(updatedURL, {
         scroll: false,
       });
     },

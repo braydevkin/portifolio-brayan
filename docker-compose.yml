@@ -37,7 +37,9 @@ services:
       - sh
       - -c
       - |
-        echo "Running"
+        echo "Running App"
+        yarn install --frozen-lockfile
+        yarn prisma generate
         yarn prisma db push
         yarn dev
     networks:

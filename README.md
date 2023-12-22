@@ -109,8 +109,8 @@ yarn prismadb:pull
 
 ##### NextJS topics used
 
-- I have created a custom hook that is responsible for updating the URL with the pagination filters. [See Custom Hook](/hooks/useCommentsRouter.tsx).
-- I've created a context that updates the list of comments as soon as a new comment is created. [See Context](/context/CommentsContext.tsx).
+- I have created a custom hook that is responsible for updating the URL with the pagination filters. [See Custom Hook](/src/hooks/useCommentsRouter.tsx).
+- I've created a context that updates the list of comments as soon as a new comment is created. [See Context](/src/context/CommentsContext.tsx).
 
 
 ##### About SEO and Accessibility

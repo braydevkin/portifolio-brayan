@@ -18,8 +18,18 @@ const CommentForm = () => {
     formState: { errors },
   } = useForm<ICommentsInputForm>();
 
-  const onSubmit: SubmitHandler<ICommentsInputForm> = (data) =>
-    console.log(data);
+  const onSubmit: SubmitHandler<ICommentsInputForm> = async (data) => {
+    const request = await fetch("/api/hello", {
+      method: "POST",
+      body: JSON.stringify({ data }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const t = await request.json();
+    console.log({ t });
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="mt-6">

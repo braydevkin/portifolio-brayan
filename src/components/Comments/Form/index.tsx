@@ -1,25 +1,75 @@
 "use client";
 
 import React from "react";
+import { useRouter } from "next/navigation";
+
 import { useForm, SubmitHandler } from "react-hook-form";
 
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 
-import { ICommentsInputForm } from "../shared/ICommentsInputForm";
+import { useToast } from "@/components/ui/use-toast";
+import { useCommentsRouter } from "@/hooks/useCommentsRouter";
+
+export type CommentsInputForm = {
+  name: string;
+  comment: string;
+};
 
 const CommentForm = () => {
   const TEXTAREA_LIMIT = 200;
+
+  const { toast } = useToast();
+  const router = useRouter();
+  const { updateCommentsFilters } = useCommentsRouter();
+
   const {
     register,
     handleSubmit,
     watch,
+    reset,
     formState: { errors },
-  } = useForm<ICommentsInputForm>();
+  } = useForm<CommentsInputForm>();
 
-  const onSubmit: SubmitHandler<ICommentsInputForm> = (data) =>
-    console.log(data);
+  const onSubmit: SubmitHandler<CommentsInputForm> = async (data) => {
+    const response = await fetch("/api/comments", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    try {
+      reset();
+      if (response.status === 200) {
+        await response.json();
+        toast({
+          title: "Thank for comment",
+          description: "Feel free to add more comments.",
+          variant: "default",
+          duration: 2000,
+        });
+        updateCommentsFilters({ skip: 0 });
+        return;
+      }
+      toast({
+        title: "An error occurs",
+        description: "You can try again or talk to our support",
+        variant: "destructive",
+        duration: 2000,
+      });
+    } catch (err) {
+      console.error(err);
+      toast({
+        title: "An error occurs",
+        description: "You can try again or talk to our support",
+        variant: "destructive",
+        duration: 2000,
+      });
+    }
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="mt-6">

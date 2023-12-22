@@ -3,7 +3,7 @@ import React from "react";
 import CommentForm from "./Form";
 import CommentList from "./List";
 
-const Comments: React.FC = () => {
+const Comments = () => {
   return (
     <section id="comments" className="w-full h-auto px-4 lg:px-24 py-6 mt-12">
       <h1 className="font-bold italic">Comments</h1>

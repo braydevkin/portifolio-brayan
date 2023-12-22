@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
-import { DarkThemeProvider } from "@/layout/DarkThemeProvider";
 
-const inter = Inter({ subsets: ["latin"] });
+import "./globals.css";
+
+import { DarkThemeProvider } from "@/layout/DarkThemeProvider";
+import { Toaster } from "@/components/ui/toaster";
+import PageLayout from "@/layout/PagesLayout";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -26,7 +27,8 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            {children}
+            <PageLayout>{children}</PageLayout>
+            <Toaster />
           </DarkThemeProvider>
         </body>
       </html>

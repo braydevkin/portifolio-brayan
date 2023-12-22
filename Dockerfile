@@ -1,8 +1,11 @@
-FROM node:18
+FROM node:18 as development
 
 WORKDIR /app
-COPY package*.json ./
-RUN yarn install
+
+COPY package.json yarn.lock ./
 COPY . .
+
+RUN yarn prisma generate
+RUN yarn install --frozen-lockfile
+
 EXPOSE 3000
-CMD yarn dev

@@ -2,9 +2,11 @@ import { Comment } from "@prisma/client";
 import { prismaClient } from "../PrismaClientConfig";
 
 export const createComment = async (data: Comment): Promise<Comment | void> => {
-  console.log({prismaClient})
   try {
-    const created = await prismaClient.comment.create({ data });
+    console.log(data);
+    const created = await prismaClient.comment.create({
+      data: { name: "Teste", comment: "teste2" },
+    });
     if (created) {
       return data;
     }

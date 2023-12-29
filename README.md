@@ -1,8 +1,8 @@
-##Portilofio Brayan - Divbrands
+##Portilofio Brayan
 
-[Access clicking here](https://portifolio-brayan-divbrands.vercel.app/)
+[Access clicking here](https://portifolio-brayan.vercel.app/)
 
-This project consists of a personal portfolio to assess the technical skills and experience required to join the Divbrands team.
+This project consists of a personal portfolio.
 
 #### Estimated time and time taken
 
@@ -140,8 +140,3 @@ curl --location 'http://localhost:3000/api/comments' \
 - set up a deployment environment to stop production in Docker.
 - Adopt dynamic SEO if there is a need to add more pages.
 - I would better structure the line of reasoning and timing.
-
-
-##### Thanks
-
-I really liked the idea of the project, I tried to do my best and even do things not described to show that I am ready to be part of the team, the opportunity to improve, learn and know more that Divbrands gave me in this process will bear good fruit soon. thank you very much.

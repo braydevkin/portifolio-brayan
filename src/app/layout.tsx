@@ -7,14 +7,14 @@ import { Toaster } from "@/components/ui/toaster";
 import PageLayout from "@/layout/PagesLayout";
 
 export const metadata: Metadata = {
-  title: "Portifolio Brayan Divbrands",
+  title: "Portifolio Brayan",
   description: "Project created for technical evaluation.",
   authors: [{ name: "Brayan Quirino", url: "https://github.com/braydevkin" }],
   openGraph: {
-    title: "Portifolio Brayan Divbrands",
+    title: "Portifolio Brayan",
     description: "Project created for technical evaluation.",
-    url: "https://portifolio-brayan-divbrands.vercel.app/",
-    siteName: "Portifolio Brayan Divbrands",
+    url: "https://portifolio-brayan.vercel.app/",
+    siteName: "Portifolio Brayan",
     images: [
       {
         url: "./assets/perfil.jpeg",

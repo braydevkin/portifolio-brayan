@@ -10,7 +10,7 @@ services:
     environment:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: admin
-      POSTGRES_DB: divbrands
+      POSTGRES_DB: portifolio
     healthcheck:
       test: ["CMD-SHELL", "pg_isready"]
       interval: 30s
@@ -18,9 +18,9 @@ services:
       retries: 5
       start_period: 80s  
     networks:
-      - portifolio-brayan-divbrands-network
+      - portifolio-brayan-network
   app:
-    image: portifolio-brayan-divbrands
+    image: portifolio-brayan
     build:
       context: ./
       dockerfile: Dockerfile
@@ -43,9 +43,9 @@ services:
         yarn prisma db push
         yarn dev
     networks:
-      - portifolio-brayan-divbrands-network
+      - portifolio-brayan-network
     environment:
-      - DATABASE_URL:postgresql://admin:admin@db:5432/divbrands
+      - DATABASE_URL:postgresql://admin:admin@db:5432/portifolio
 networks:
-  portifolio-brayan-divbrands-network:
+  portifolio-brayan-network:
     driver: bridge
